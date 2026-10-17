@@ -1,0 +1,590 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10071f">
+<title>Our Little Universe ♡</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --lavender: #e5caff;
+  --purple: #bc91ff;
+  --soft: #c8b6df;
+  --background: #090511;
+}
+* { box-sizing: border-box; }
+html { min-height: 100%; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: #fff8ff;
+  background:
+    radial-gradient(ellipse at 50% 43%, #32184d 0%, transparent 48%),
+    radial-gradient(ellipse at 15% 75%, #21103d 0%, transparent 45%),
+    radial-gradient(ellipse at 85% 18%, #1b1239 0%, transparent 43%),
+    var(--background);
+  font-family: "DM Sans", sans-serif;
+  font-weight: 300;
+}
+button { font: inherit; }
+#sky {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+.aurora {
+  position: fixed;
+  inset: -30%;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 40% 50%, #8445b51a, transparent 35%),
+    radial-gradient(ellipse at 70% 60%, #5143a31b, transparent 32%);
+  filter: blur(35px);
+  animation: aurora 16s ease-in-out infinite alternate;
+}
+@keyframes aurora {
+  from { transform: translate(-2%, -1%) rotate(-5deg) scale(1); }
+  to { transform: translate(3%, 2%) rotate(7deg) scale(1.08); }
+}
+header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 65px 18px 8px;
+}
+.eyebrow {
+  color: #cdb0f3;
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+h1 {
+  margin: 20px 0 13px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(54px, 10vw, 83px);
+  line-height: .98;
+  letter-spacing: -1.5px;
+  color: #fff6ff;
+  text-shadow: 0 0 35px #c18bff55;
+}
+.subtitle {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(19px, 3vw, 23px);
+  line-height: 1.5;
+  color: #d8c8eb;
+}
+.progress {
+  margin-top: 25px;
+  color: #bfa7df;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+#count { color: #f3dfff; }
+.universe {
+  position: relative;
+  z-index: 1;
+  width: min(94vw, 650px);
+  height: min(94vw, 650px);
+  min-height: 330px;
+  margin: 0 auto;
+  isolation: isolate;
+}
+.orbit {
+  position: absolute;
+  inset: 13%;
+  border: 1px solid #d0a3ff24;
+  border-radius: 50%;
+  transform: rotate(-27deg) scaleY(.72);
+  box-shadow: 0 0 30px #9f5fe50a;
+}
+.orbit.two {
+  inset: 22%;
+  transform: rotate(33deg) scaleY(.78);
+  border-color: #d0a3ff1e;
+}
+.orbit.three {
+  inset: 5%;
+  transform: rotate(65deg) scaleY(.88);
+  border-color: #d0a3ff12;
+}
+.core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 145px;
+  height: 145px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    #fff9ff 0%, #f0d4ff 4%, #ce9cff 12%,
+    #874fc3 28%, #482366 48%, #28133f 60%, transparent 72%);
+  filter: drop-shadow(0 0 28px #b87cff70);
+  animation: heartPulse 5s ease-in-out infinite;
+}
+.core:after {
+  content: "♡";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: white;
+  font-size: 35px;
+  text-shadow: 0 0 20px white;
+}
+@keyframes heartPulse {
+  0%, 100% { scale: 1; filter: drop-shadow(0 0 25px #b87cff60); }
+  50% { scale: 1.09; filter: drop-shadow(0 0 42px #c995ff90); }
+}
+.star {
+  position: absolute;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  width: 47px;
+  height: 47px;
+  padding: 0;
+  border: 1px solid #d7b9ff62;
+  border-radius: 50%;
+  color: #fff5ff;
+  background: linear-gradient(145deg, #34204dc9, #1c102dd9);
+  font-size: 19px;
+  cursor: pointer;
+  box-shadow: 0 0 18px #ac70ff28, inset 0 0 12px #b77dff0d;
+  transition: transform .3s ease, box-shadow .3s ease, background .3s ease;
+  animation: starGlow 3.4s ease-in-out infinite;
+  -webkit-tap-highlight-color: transparent;
+}
+.star:hover, .star:focus-visible {
+  transform: translate(-50%, -50%) scale(1.24);
+  background: #65418a;
+  box-shadow: 0 0 35px #c38aff99;
+  outline: none;
+}
+.star.found {
+  background: #68428b;
+  border-color: #eedcff;
+  box-shadow: 0 0 25px #c68aff70;
+}
+.star span {
+  position: absolute;
+  top: 51px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: #d0bce9;
+}
+@keyframes starGlow {
+  0%, 100% { filter: brightness(.8); }
+  50% { filter: brightness(1.45); }
+}
+.note {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #bca6d8;
+  font-size: 10px;
+  letter-spacing: 2px;
+  padding: 0 20px 60px;
+}
+footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 0 22px 60px;
+  color: #c5b0dd;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 20px;
+  line-height: 1.6;
+}
+footer strong {
+  display: block;
+  color: #f0dcff;
+  font-weight: 400;
+  font-size: 29px;
+  margin-bottom: 7px;
+}
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  padding: 18px;
+  align-items: center;
+  justify-content: center;
+  background: #05020de8;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+.modal.show { display: flex; animation: fadeIn .25s ease; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.panel {
+  position: relative;
+  width: min(100%, 490px);
+  max-height: 88vh;
+  overflow-y: auto;
+  text-align: center;
+  padding: 37px 28px 27px;
+  border: 1px solid #c69ce74d;
+  border-radius: 24px;
+  background:
+    radial-gradient(ellipse at top, #47245b66, transparent 70%),
+    linear-gradient(145deg, #21132ff7, #10091dfc);
+  box-shadow: 0 0 80px #8c4ecb28, inset 0 0 35px #bb8bff08;
+  animation: panelIn .35s ease;
+}
+@keyframes panelIn {
+  from { transform: translateY(12px) scale(.98); opacity: .5; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+.close {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  padding: 3px 8px;
+  border: 0;
+  background: transparent;
+  color: #dfc8f5;
+  font-size: 28px;
+  cursor: pointer;
+}
+#title {
+  margin: 19px 0;
+  color: #f3e4ff;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.1;
+}
+#content p {
+  color: #e2d4f0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 22px;
+  line-height: 1.55;
+  white-space: pre-line;
+}
+.photo {
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto 18px;
+}
+.photo img {
+  display: block;
+  width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 14px;
+  border: 1px solid #d2a9fa50;
+  box-shadow: 0 0 30px #b16bff25;
+}
+.signature {
+  color: #d6afff !important;
+  font-style: italic;
+}
+.next {
+  margin-top: 12px;
+  padding: 13px 22px;
+  border: 1px solid #d2b1f477;
+  border-radius: 30px;
+  color: #f7eaff;
+  background: #42265b;
+  cursor: pointer;
+  font-size: 11px;
+  letter-spacing: 1px;
+  transition: background .2s ease;
+}
+.next:hover { background: #69428c; }
+@media (max-width: 420px) {
+  header { padding-top: 45px; }
+  .universe { width: 96vw; height: 96vw; }
+  .star { width: 41px; height: 41px; }
+  .star span { top: 45px; }
+  .core { width: 115px; height: 115px; }
+  .panel { padding: 34px 19px 24px; }
+  #content p { font-size: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *:before, *:after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+<body>
+<canvas id="sky" aria-hidden="true"></canvas>
+<div class="aurora" aria-hidden="true"></div>
+
+<header>
+  <div class="eyebrow">a little place in the universe</div>
+  <h1>For My Kaye ♡</h1>
+  <div class="subtitle">Somewhere among all these stars,<br>there's a little universe that belongs to us.</div>
+  <div class="progress"><span id="count">0</span> OF 12 LITTLE SECRETS DISCOVERED</div>
+</header>
+
+<main>
+  <div class="universe" id="universe">
+    <div class="orbit"></div>
+    <div class="orbit two"></div>
+    <div class="orbit three"></div>
+    <div class="core"></div>
+  </div>
+  <div class="note">✦ TAP EACH STAR TO DISCOVER SOMETHING ✦</div>
+</main>
+
+<footer>
+  <strong>even across all this distance,</strong>
+  you will always be my favourite place to come home to.
+</footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="title">
+  <div class="panel">
+    <button class="close" id="close" aria-label="Close">&times;</button>
+    <div class="eyebrow">a little secret, just for you</div>
+    <h2 id="title"></h2>
+    <div id="content"></div>
+    <button class="next" id="next">return to our universe ✦</button>
+  </div>
+</div>
+
+<script>
+/* Animated starfield and shooting stars */
+(function () {
+  const canvas = document.getElementById("sky");
+  const ctx = canvas.getContext("2d");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let width = 0, height = 0, stars = [], shooting = [], lastShot = 0;
+
+  function resize() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    canvas.style.width = width + "px";
+    canvas.style.height = height + "px";
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    stars = Array.from({ length: Math.min(180, Math.floor(width * height / 6500)) }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      r: Math.random() * 1.35 + .25,
+      phase: Math.random() * Math.PI * 2,
+      speed: Math.random() * .0018 + .0005,
+      alpha: Math.random() * .55 + .2
+    }));
+  }
+
+  function shoot() {
+    if (shooting.length < 2) {
+      shooting.push({
+        x: Math.random() * width * .9,
+        y: Math.random() * height * .4,
+        vx: 4 + Math.random() * 4,
+        vy: 2 + Math.random() * 2.5,
+        life: 0,
+        max: 45 + Math.random() * 35
+      });
+    }
+  }
+
+  function draw(time) {
+    ctx.clearRect(0, 0, width, height);
+
+    for (const s of stars) {
+      const flicker = reduceMotion ? 1 : .55 + .45 * Math.sin(time * s.speed + s.phase);
+      ctx.globalAlpha = s.alpha * flicker;
+      ctx.fillStyle = "#f5eaff";
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+
+    if (!reduceMotion && time - lastShot > 2100 + Math.random() * 2500) {
+      shoot();
+      lastShot = time;
+    }
+
+    shooting = shooting.filter(s => s.life < s.max);
+    for (const s of shooting) {
+      const fade = 1 - s.life / s.max;
+      const tailX = s.x - s.vx * 10;
+      const tailY = s.y - s.vy * 10;
+      const gradient = ctx.createLinearGradient(tailX, tailY, s.x, s.y);
+      gradient.addColorStop(0, "rgba(202,155,255,0)");
+      gradient.addColorStop(1, "rgba(255,245,255," + fade + ")");
+      ctx.strokeStyle = gradient;
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(tailX, tailY);
+      ctx.lineTo(s.x, s.y);
+      ctx.stroke();
+      ctx.fillStyle = "rgba(255,250,255," + fade + ")";
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, 1.5, 0, Math.PI * 2);
+      ctx.fill();
+      s.x += s.vx;
+      s.y += s.vy;
+      s.life++;
+    }
+    requestAnimationFrame(draw);
+  }
+
+  resize();
+  window.addEventListener("resize", resize);
+  requestAnimationFrame(draw);
+})();
+
+/* Your 12 secrets */
+const secrets = [
+  {
+    title:"the beginning of us",
+    text:"Out of all the people in this enormous universe, somehow our paths crossed. And somewhere along the way, you became someone I never want to imagine my days without."
+  },
+  {
+    title:"my favourite face",
+    text:"If I could keep one picture in my mind for the rest of my life, it would be your face. Not because it's perfect, but because it's yours. You have no idea how much happiness you bring me just by being you.",
+    photo:true
+  },
+  {
+    title:"your little universe",
+    text:"I wish I could build you a tiny universe where every star reminded you that you're loved, every planet kept you safe, and every sunrise promised that tomorrow could be beautiful too."
+  },
+  {
+    title:"the little things",
+    text:"It's never only the big moments with you. It's the random conversations, the little messages, the silly things that make us laugh, and the quiet comfort of knowing you're there. Those are the things I want more of."
+  },
+  {
+    title:"if i could be there",
+    text:"Some days I wish distance were something I could simply fold up and put away. I'd sit beside you, hold you close, and let you rest without needing to explain a single thing.",
+    photo:true
+  },
+  {
+    title:"my favourite person",
+    text:"You don't have to be happy every second, look perfect every day, or have everything figured out. I want the real you: the excited you, the tired you, the overthinking you, and every version in between."
+  },
+  {
+    title:"a promise, not a fairytale",
+    text:"I can't promise that every day will be easy or that we'll never disagree. I can promise to keep trying, to listen, to be honest, and to remember that we're on the same team."
+  },
+  {
+    title:"a little piece of you",
+    text:"Here's a little reminder of the girl who somehow became such a big part of my world. I wish I could look at this with you beside me.",
+    photo:true
+  },
+  {
+    title:"the distance between stars",
+    text:"India and the Philippines may look far apart on a map, but miles don't get to decide what someone means to me. You matter to me in all the small moments, even when I can't be there in person."
+  },
+  {
+    title:"things i hope you remember",
+    text:"On the days you doubt yourself, remember that you are more than your worries. You deserve gentleness, patience, laughter, and love that doesn't ask you to pretend to be someone else."
+  },
+  {
+    title:"one more reason to smile",
+    text:"If this little universe gave you even one small smile, then it has already done what I wanted it to do. You deserve so many more smiles than a webpage can fit.",
+    photo:true
+  },
+  {
+    title:"to my universe, kaye",
+    text:"Happy three months, my love.\n\nThree months might seem small to the universe, but what matters to me is everything we've put inside them: the conversations, the laughter, the reassurance, the memories, and all the little moments that became ours.\n\nI wish I could be there beside you today. I wish I could hold your hand, look at you, and tell you all of this without a screen between us. Until I can, I made you this tiny universe. Every star is a reminder that even when we're far apart, you still have a place in my thoughts and in my heart.\n\nThank you for being you, Kaye. Thank you for letting me be part of your life. I don't need us to be a perfect fairytale. I want something real with you: something we keep choosing, caring for, and growing together.\n\nHappy anniversary, baby. If I had to choose again among all the people and all the stars, I'd still hope to find my way to you.\n\nI love you. ♡",
+    letter:true
+  }
+];
+
+const photoFiles = {
+  1:"photos/kaye1.jpg",
+  4:"photos/kaye2.jpg",
+  7:"photos/kaye3.jpg"
+};
+
+const universe = document.getElementById("universe");
+const modal = document.getElementById("modal");
+const content = document.getElementById("content");
+const found = new Set();
+
+const positions = [
+  [50,8],[78,17],[91,40],[82,72],[66,91],[34,91],
+  [15,72],[8,43],[23,18],[50,28],[72,52],[35,67]
+];
+
+secrets.forEach((secret, i) => {
+  const star = document.createElement("button");
+  star.className = "star";
+  star.style.left = positions[i][0] + "%";
+  star.style.top = positions[i][1] + "%";
+  star.style.animationDelay = (i * .23) + "s";
+  star.setAttribute("aria-label", "Open secret " + (i + 1));
+  star.innerHTML = "✦<span>" + String(i + 1).padStart(2, "0") + "</span>";
+  star.addEventListener("click", () => openSecret(i, star));
+  universe.appendChild(star);
+});
+
+function openSecret(i, star) {
+  const s = secrets[i];
+  found.add(i);
+  star.classList.add("found");
+  document.getElementById("count").textContent = found.size;
+  document.getElementById("title").textContent = s.title;
+  content.replaceChildren();
+
+  if (photoFiles[i]) {
+    const wrap = document.createElement("div");
+    wrap.className = "photo";
+    const img = document.createElement("img");
+    img.src = photoFiles[i];
+    img.alt = "A favourite photo of Kaye";
+    img.onerror = () => {
+      wrap.textContent = "Photo not found. Check the photos folder and image filenames.";
+    };
+    wrap.appendChild(img);
+    content.appendChild(wrap);
+  }
+
+  const p = document.createElement("p");
+  p.textContent = s.text;
+  content.appendChild(p);
+
+  if (s.letter) {
+    const sig = document.createElement("p");
+    sig.className = "signature";
+    sig.textContent = "always yours. ♡";
+    content.appendChild(sig);
+  }
+
+  document.getElementById("next").textContent =
+    i === 11 ? "keep our universe close ✦" : "return to our universe ✦";
+  modal.classList.add("show");
+  document.getElementById("close").focus();
+}
+
+function closeModal() {
+  modal.classList.remove("show");
+}
+document.getElementById("close").addEventListener("click", closeModal);
+document.getElementById("next").addEventListener("click", closeModal);
+modal.addEventListener("click", e => {
+  if (e.target === modal) closeModal();
+});
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") closeModal();
+});
+</script>
+</body>
+</html>
